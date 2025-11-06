@@ -25,6 +25,6 @@ Ce projet implémente l'algorithme de **Recuit Simulé** pour résoudre le probl
 5  2  3  4  7 10  3 10 15  0
 Exemple de graphique généré :
 
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/13df63e5-1986-4d7d-9dc4-993b270fab57" />
+<img width="800" height="600" alt="image" src=["(https://github.com/hanazroud/probleme_des_voyageurs_de-_commerce/blob/main/chemin_solution_recuit.png"]/>
 
-![Visualisation du chemin](chemin_solution_recuit.png)
+
