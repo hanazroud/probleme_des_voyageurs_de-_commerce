@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 # --- Fonction pour calculer la distance totale d'un circuit ---
 def calculer_distance_totale(solution, matrice_distances):
     distance_totale = 0
-    for i in range(len(solution) - 1):
-        distance_totale += matrice_distances[solution[i]][solution[i + 1]]
+    for i in range(len(solution)-1):
+        distance_totale += matrice_distances[solution[i]][solution[i+1]]
     distance_totale += matrice_distances[solution[-1]][solution[0]]  # retour à la ville de départ
     return distance_totale
 
@@ -28,7 +28,6 @@ def recuit_simule(matrice_distances, temperature_initiale, refroidissement, iter
     meilleure_distance = distance_actuelle
 
     temperature = temperature_initiale
-    historique = [distance_actuelle]  
 
     for _ in range(iterations):
         voisin = generer_voisin(solution_actuelle)
@@ -45,13 +44,10 @@ def recuit_simule(matrice_distances, temperature_initiale, refroidissement, iter
                 meilleure_distance = distance_actuelle
 
         temperature *= refroidissement
-        historique.append(meilleure_distance)
-
         if temperature < 1e-3:
             break
 
-    return meilleure_solution, meilleure_distance, historique
-
+    return meilleure_solution, meilleure_distance
 
 # --- Matrice des distances ---
 matrice_distances = [
@@ -67,31 +63,39 @@ matrice_distances = [
     [5, 2, 3, 4, 7, 10, 3, 10, 15, 0]
 ]
 
-# --- Paramètres du recuit simulé ---
+# --- Coordonnées fictives pour visualiser le trajet ---
+coord_villes = [
+    (0,0), (1,5), (2,3), (3,7), (4,1),
+    (5,4), (6,0), (7,6), (8,2), (9,5)
+]
+
+# --- Paramètres du Recuit Simulé ---
 temperature_initiale = 100
 refroidissement = 0.98
 iterations = 5000
 
 # --- Exécution ---
-meilleure_solution, meilleure_distance, historique = recuit_simule(
+meilleure_solution, meilleure_distance = recuit_simule(
     matrice_distances, temperature_initiale, refroidissement, iterations
 )
 
-# --- Résultats ---
-print(" la meilleure solution trouvée :", meilleure_solution)
-print("la distance minimale :", meilleure_distance)
+print("🔥 Meilleure solution trouvée :", meilleure_solution)
+print("📏 Distance minimale :", meilleure_distance)
 
-# --- Visualisation ---
-plt.figure(figsize=(8, 5))
-plt.plot(historique, 'b-', label='Distance minimale')
-plt.title("Évolution de la distance - Recuit simulé")
-plt.xlabel("les itérations")
-plt.ylabel("la distance totale est ")
-plt.legend()
+# --- Préparer les coordonnées pour tracer le chemin ---
+x = [coord_villes[v][0] for v in meilleure_solution + [meilleure_solution[0]]]
+y = [coord_villes[v][1] for v in meilleure_solution + [meilleure_solution[0]]]
+
+# --- Visualisation du chemin ---
+plt.figure(figsize=(8,6))
+plt.plot(x, y, 'k--', marker='o')  # lignes et points
+for i, ville in enumerate(meilleure_solution):
+    plt.text(coord_villes[ville][0], coord_villes[ville][1], str(ville), fontsize=12)
+plt.title("Chemin optimal - Recuit Simulé")
+plt.xlabel("X")
+plt.ylabel("Y")
 plt.grid(True)
-
-# --- Sauvegarde du graphique ---
-plt.savefig("chemin_solution.png")
+plt.savefig("chemin_solution_recuit.png")
 plt.show()
 
-
+print("Graphique sauvegardé sous : chemin_solution_recuit.png")
