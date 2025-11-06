@@ -23,5 +23,8 @@ Ce projet implémente l'algorithme de **Recuit Simulé** pour résoudre le probl
 7  7  4  7  2  7  2  0  1 10
 6  8  2  5  2  2  1  1  0 15
 5  2  3  4  7 10  3 10 15  0
-Exemple de graphique généré : 
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/950c335c-def3-45ed-b8a0-a4337832e1e3" />
+Exemple de graphique généré :
+
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/13df63e5-1986-4d7d-9dc4-993b270fab57" />
+
+![Visualisation du chemin](C:/algorithme evolutionnaire/chemin_solution_recuit.png)
