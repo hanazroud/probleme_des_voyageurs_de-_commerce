@@ -79,8 +79,8 @@ meilleure_solution, meilleure_distance = recuit_simule(
     matrice_distances, temperature_initiale, refroidissement, iterations
 )
 
-print("🔥 Meilleure solution trouvée :", meilleure_solution)
-print("📏 Distance minimale :", meilleure_distance)
+print(" Meilleure solution trouvée :", meilleure_solution)
+print(" Distance minimale :", meilleure_distance)
 
 # --- Préparer les coordonnées pour tracer le chemin ---
 x = [coord_villes[v][0] for v in meilleure_solution + [meilleure_solution[0]]]
@@ -99,3 +99,4 @@ plt.savefig("chemin_solution_recuit.png")
 plt.show()
 
 print("Graphique sauvegardé sous : chemin_solution_recuit.png")
+
