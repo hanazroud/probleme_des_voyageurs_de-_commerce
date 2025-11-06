@@ -27,4 +27,4 @@ Exemple de graphique généré :
 
 <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/13df63e5-1986-4d7d-9dc4-993b270fab57" />
 
-![Visualisation du chemin](C:/algorithme evolutionnaire/chemin_solution_recuit.png)
+![Visualisation du chemin](chemin_solution_recuit.png)
